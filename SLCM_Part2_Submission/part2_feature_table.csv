@@ -1,0 +1,9 @@
+field,what it represents,% missing,preparation,why included
+income_monthly -> log_income,Monthly household income ($),0.0,"log(1 + x), then standardize",Core income measure; log handles the skew and the $0 values
+household_size_from_members,Additional members + 1 (primary contact),0.0,standardize,Household composition (the Part 1 definition)
+children_17_under,"Children 17 and under (6 = ""More than 5"")",0.0,standardize; 6 kept as a lower bound,Family stage; separates families with many children
+housing_group,Housing situation at intake (6 levels),0.0,one-hot,Core housing measure; small categories already combined in the provided cleaning
+eviction_status,Currently being evicted / Not being evicted / Unknown,0.0,one-hot; Unknown is its own level,"Housing urgency; Unknown must not be read as ""not at risk"""
+employment_status,Employment situation (5 levels),0.0,one-hot,Core employment measure
+section8_or_voucher,Has a Section 8 / housing voucher,0.0,one-hot,Housing subsidy changes how rent pressure shows up
+inc_src_* (6 flags),"SNAP/TANF, full-time, part-time, SSI/SSDI, no income, other",1.0,0/1; missing filled with most frequent value (0),A household can have several sources; shows how income is made up
